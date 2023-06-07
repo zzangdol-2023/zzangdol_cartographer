@@ -1,10 +1,16 @@
-<!-- -->
+<!--
+  demo_backpack_2d_localization.launch 파일을 개조한 파일
+
+  두 파일에서 robot_state_publisher:robot_state_publisher와 rosbag:play 노드는 지웠다.
+  해당 노드들은 zzangdol_bringup 패키지나 zzangdol_bag 패키지에서 더 범용성있게 사용되기 떄문
+-->
 
 <launch>
   <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find zzangdol_cartographer)/configuration_files
-          -configuration_basename zzangdol_mapping1.lua"
+          -configuration_basename zzangdol_localization.lua
+          -load_state_filename $(find zzangdol_bringup)/bag/$(arg load_state_filename).bag.pbstream"
       output="screen">
     <remap from="imu" to="imu/data" />
   </node>
@@ -14,5 +20,5 @@
 
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find zzangdol_cartographer)/rviz/cartographer_2d.rviz" />
-e
+
 </launch>

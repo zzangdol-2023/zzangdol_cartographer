@@ -1,0 +1,44 @@
+<!--
+  offline_backpack_2d.launch offline_node.launch 파일을 합친 파일
+  (offline_node.launch 파일은 offline_backpack_2d.launch 파일 혹은
+  offline_backpack_3d.launch 파일에서만 불러와져서 쓰인다.)
+
+  
+-->
+
+<launch>
+  <arg name="bag_filenames"/>
+  <arg name="no_rviz" default="false"/>
+  <arg name="rviz_config" default="$(find zzangdol_cartographer)/rviz/cartographer_2d.rviz"/>
+  <arg name="configuration_directory" default="$(find zzangdol_cartographer)/configuration_files"/>
+  <arg name="configuration_basenames" default="zzangdol_mapping.lua"/>
+  <arg name="urdf_filenames" default="$(find zzangdol_bringup)/urdf/test_car.xacro"/>
+  <arg name="launch_prefix" default=""/>
+
+  <remap from="imu" to="imu/data" />
+
+  <param name="/use_sim_time" value="true" />
+
+  <group unless="$(arg no_rviz)">
+    <node name="rviz"
+          pkg="rviz"
+          type="rviz"
+          required="true"
+          args="-d $(arg rviz_config)" />
+
+    <node name="cartographer_occupancy_grid_node"
+        pkg="cartographer_ros"
+        type="cartographer_occupancy_grid_node"
+        args="-resolution 0.025" />
+  </group>
+
+  <node name="cartographer_offline_node" pkg="cartographer_ros"
+      required="$(arg no_rviz)"
+      type="cartographer_offline_node" args="
+          -configuration_directory $(arg configuration_directory)
+          -configuration_basenames $(arg configuration_basenames)
+          -urdf_filenames $(arg urdf_filenames)
+          -bag_filenames $(find zzangdol_bag)/bag/$(arg bag_filenames).bag"
+      launch-prefix="$(arg launch_prefix)"
+      output="screen"/>
+</launch>
