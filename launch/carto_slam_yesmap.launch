@@ -9,10 +9,13 @@
 
 
 <launch>
+  <arg name="bag_filename" default="$(eval eval ('_' + '_import_' + '_(\'datetime\')').datetime.now().strftime('%Y-%m-%d_%H:%M:%S'))"/>
+
   <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find zzangdol_cartographer)/configuration_files
-          -configuration_basename zzangdol_mapping.lua"
+          -configuration_basename zzangdol_mapping.lua
+          -save_state_filename $(find zzangdol_cartographer)/pbstream/$(bag_filename)_online.pbstream"
       output="screen">
     <remap from="imu" to="imu/data" />
   </node>
@@ -22,5 +25,5 @@
 
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find zzangdol_cartographer)/rviz/cartographer_2d.rviz" />
-e
+
 </launch>

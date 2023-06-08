@@ -10,15 +10,17 @@ original:
 ours:
     roslaunch zzangdol_bag bag_filename:=default 
 OR  roslaunch zzangdol_bringup zzangdol_bringup
-
-+   roslaunch zzangdol_slam carto_slam.launch 
++
+    roslaunch zzangdol_slam carto_slam_yesmap.launch 
+OR  roslaunch zzangdol_slam carto_slam_nomap.launch 
 
 
 @@carto_offline.launch EXAMPLE@@
 original: 
     roslaunch cartographer_ros offline_backpack_2d.launch bag_filenames:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag
 ours:
-    roslaunch zzangdol_slam carto_offline.launch bag_filename:=bag_filename
+    roslaunch zzangdol_slam carto_offline.launch bag_filenames:=bag_filename
+    [bag_filenames 안주면 가장 최근 zzangdol_bag 파일 사용]
 
 
 
@@ -30,9 +32,9 @@ original:
 ours:
     roslaunch zzangdol_bag bag_filename:=default
 OR  roslaunch zzangdol_bringup zzangdol_bringup
-
-+   roslaunch zzangdol_slam carto_localization.launch \
-    load_state_filename:=bagpbstream_file_name
++
+    roslaunch zzangdol_slam carto_localization.launch load_state_filename:=bagpbstream_file_name
+	[load_state_filename를 안주면 가장 최근 pbstream 파일 사용]
 
 
 
