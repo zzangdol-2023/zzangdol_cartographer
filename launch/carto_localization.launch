@@ -25,7 +25,7 @@
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find zzangdol_cartographer)/rviz/cartographer_2d.rviz" />
 
-  <node name="$(anon rqt_tf_tree)" pkg="rqt_tf_tree" type="rqt_tf_tree"/>
+  <!-- <node name="$(anon rqt_tf_tree)" pkg="rqt_tf_tree" type="rqt_tf_tree"/> -->
 
 
 </launch>

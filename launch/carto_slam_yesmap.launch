@@ -15,7 +15,7 @@
       type="cartographer_node" args="
           -configuration_directory $(find zzangdol_cartographer)/configuration_files
           -configuration_basename zzangdol_mapping.lua
-          -save_state_filename $(find zzangdol_cartographer)/pbstream/$(bag_filename)_online.pbstream"
+          -save_state_filename $(find zzangdol_cartographer)/pbstream/$(arg bag_filename)_online.pbstream"
       output="screen">
     <remap from="imu" to="imu/data" />
   </node>
