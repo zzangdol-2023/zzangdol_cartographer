@@ -8,7 +8,7 @@ for zzangdol car autodrive project
 
 carto_offline.launch 파일은 .bag 파일만 넣어주고 단독으로 실행해서 .bag.pbstream 파일을 얻는다.
 
-## Quick Start : carto_slam.launch, carto_localization.launch
+## Quick Start : carto_slam.launch
 
 ### carto_slam.launch EXAMPLE
 
@@ -20,8 +20,8 @@ ours:
     roslaunch zzangdol_bag bag_filename:=default
 OR  roslaunch zzangdol_bringup zzangdol_bringup
 +
-    roslaunch zzangdol_slam carto_slam_yesmap.launch
-OR  roslaunch zzangdol_slam carto_slam_nomap.launch
+    roslaunch zzangdol_cartographer carto_slam_yesmap.launch
+OR  roslaunch zzangdol_cartographer carto_slam_nomap.launch
 ```
 
 ### carto_offline.launch EXAMPLE
@@ -30,24 +30,35 @@ OR  roslaunch zzangdol_slam carto_slam_nomap.launch
 original:
     roslaunch cartographer_ros offline_backpack_2d.launch bag_filenames:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag
 ours:
-    roslaunch zzangdol_slam carto_offline.launch bag_filenames:=bag_filename
+    roslaunch zzangdol_cartographer carto_offline.launch bag_filenames:=bag_filename
     [bag_filenames 안주면 가장 최근 zzangdol_bag 파일 사용]
 
 ```
 
-### carto_localization.launch EXAMPLE
+## Quick Start : carto_localization.launch
+
+### carto_localization.launch
+
+- original:
 
 ```bash
-original:
-    roslaunch cartographer_ros demo_backpack_2d_localization.launch \
-    load_state_filename:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag.pbstream \
-    bag_filename:=${HOME}/Downloads/b2-2016-04-27-12-31-41.bag
-ours:
-    roslaunch zzangdol_bag bag_filename:=default
-OR  roslaunch zzangdol_bringup zzangdol_bringup
-+
-    roslaunch zzangdol_slam carto_localization.launch load_state_filename:=bagpbstream_file_name
-	[load_state_filename를 안주면 가장 최근 pbstream 파일 사용]
+roslaunch cartographer_ros demo_backpack_2d_localization.launch \
+load_state_filename:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag.pbstream \
+bag_filename:=${HOME}/Downloads/b2-2016-04-27-12-31-41.bag
+```
+
+- ours(use bagfiles):
+
+```bash
+roslaunch zzangdol_bag bag_filename:=default
+```
+
+- ours(use live sensor data)
+
+```bash
+roslaunch zzangdol_bringup zzangdol_bring_all.launch usb_config:=true
+## [load_state_filename를 안주면 가장 최근 pbstream 파일 사용]
+roslaunch zzangdol_cartographer carto_localization.launch load_state_filename:=[bagpbstream_file_name]
 
 ```
 
