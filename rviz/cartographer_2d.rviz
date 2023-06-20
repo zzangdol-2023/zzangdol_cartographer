@@ -57,6 +57,8 @@ Visualization Manager:
       Value: true
     - Class: rviz/TF
       Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: true
@@ -174,10 +176,31 @@ Visualization Manager:
         Trajectory 0:
           0.180: true
           1.180: true
+          10.180: true
+          11.180: true
+          12.180: true
+          13.180: true
+          14.180: true
+          15.180: true
+          16.180: true
+          17.180: true
+          18.180: true
+          19.180: true
           2.180: true
+          20.180: true
+          21.108: true
+          22.18: true
           3.180: true
-          4.144: true
-          5.54: true
+          4.180: true
+          5.180: true
+          6.180: true
+          7.180: true
+          8.180: true
+          9.180: true
+          Submap Pose Markers: true
+          Value: true
+        Trajectory 1:
+          0.12: true
           Submap Pose Markers: true
           Value: true
       Topic: /submap_list
@@ -218,6 +241,7 @@ Visualization Manager:
       Name: Trajectories
       Namespaces:
         Trajectory 0: true
+        Trajectory 1: true
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -288,7 +312,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.1274794340133667
+      Distance: 10.051643371582031
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -296,17 +320,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.4073442816734314
-        Y: -0.9138953685760498
-        Z: 1.0002960948440887e-07
+        X: 0.3722408413887024
+        Y: -0.8777279257774353
+        Z: 1.816194890125189e-05
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.1703980416059494
+      Pitch: 1.5497963428497314
       Target Frame: base_footprint
-      Yaw: 5.4785871505737305
+      Yaw: 4.643588542938232
     Saved: ~
 Window Geometry:
   Displays:
@@ -325,4 +349,4 @@ Window Geometry:
     collapsed: false
   Width: 1440
   X: 324
-  Y: 106
+  Y: 69
