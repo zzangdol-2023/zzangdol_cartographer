@@ -26,10 +26,10 @@
           required="true"
           args="-d $(arg rviz_config)" />
 
-    <node name="cartographer_occupancy_grid_node"
+    <!-- <node name="cartographer_occupancy_grid_node"
         pkg="cartographer_ros"
         type="cartographer_occupancy_grid_node"
-        args="-resolution 0.025" />
+        args="-resolution 0.025" /> -->
   </group>
 
   <node name="cartographer_offline_node" pkg="cartographer_ros"
