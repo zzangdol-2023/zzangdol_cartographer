@@ -142,6 +142,6 @@ TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 10
 
 
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
--- 많이 틀어졌을 때는 다시 원래대로 돌리는 
+-- 많이 틀어졌을 때는 다시 원래대로 돌리는 힘은 약해지지만 새롭게 맵이 그려져서 왜곡되는 특성도 약해진다.
 
 return options
