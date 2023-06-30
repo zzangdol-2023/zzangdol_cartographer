@@ -93,8 +93,8 @@ MAP_BUILDER = {
   collate_by_trajectory = false,
 }
 
-include "my_trajectory_builder_2d.lua"
-include "my_trajectory_builder_3d.lua"
+include "my_trajectory_builder_2d_original.lua"
+include "my_trajectory_builder_3d_original.lua"
 
 TRAJECTORY_BUILDER = {
   trajectory_builder_2d = TRAJECTORY_BUILDER_2D,

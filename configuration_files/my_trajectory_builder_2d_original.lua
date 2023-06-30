@@ -14,8 +14,8 @@
 
 TRAJECTORY_BUILDER_2D = {
   use_imu_data = true,
-  min_range = 0,
-  max_range = 8.,
+  min_range = 0.,
+  max_range = 30.,
   min_z = -0.8,
   max_z = 2.,
   missing_data_ray_length = 5.,
@@ -25,7 +25,7 @@ TRAJECTORY_BUILDER_2D = {
   adaptive_voxel_filter = {
     max_length = 0.5,
     min_num_points = 200,
-    max_range = 20.,
+    max_range = 50.,
   },
 
   loop_closure_adaptive_voxel_filter = {
