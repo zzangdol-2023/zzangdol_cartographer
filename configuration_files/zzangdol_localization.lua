@@ -16,7 +16,7 @@ POSE_GRAPH.constraint_builder.min_score = 0.50 -- 0.55
 TRAJECTORY_BUILDER_2D.voxel_filter_size = 0.1 -- 0.025
 
 
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 2 -- 10
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 5 -- 10
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 30
 
 
