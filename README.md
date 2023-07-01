@@ -4,6 +4,8 @@ Based on cartographer_ros cartographer package,
 This package re-defined launch file, configuration file(lua), rviz config
 for zzangdol car autodrive project
 
+Lastupdate:230701
+
 ## Info
 
 carto_offline.launch 파일은 .bag 파일만 넣어주고 단독으로 실행해서 .bag.pbstream 파일을 얻는다.
