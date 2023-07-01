@@ -63,3 +63,15 @@ roslaunch zzangdol_cartographer carto_localization.launch load_state_filename:=[
 ```
 
 즉, 기존에 bag파일만으로 진행하던 것은 bag 파일 혹은 zzangdol_bringup으로 실제 토픽을 가지고도 실행되도록 한 것이다.
+
+### Latest Option
+
+roslaunch 실행(rviz 실행안됩니다.)
+```bash
+roslaunch zzangdol_cartographer carto_localization.launch  load_state_filename:=2F_bag_2round_ver2 rviz:=false
+```
+zzangdol_cartographer/rviz 에 위치한 navigation_config.rviz 파일을 불러서 rviz를 따로 실행시켜야 합니다. 
+
+```bash
+rosrun rviz rviz -d navigation_config.rviz 
+```
