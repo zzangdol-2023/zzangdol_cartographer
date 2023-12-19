@@ -5,6 +5,9 @@
 MAX_3D_RANGE = 60.
 INTENSITY_THRESHOLD = 40
 
+
+--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 TRAJECTORY_BUILDER_3D = {
   min_range = 1.,
   max_range = MAX_3D_RANGE,
@@ -48,6 +51,7 @@ TRAJECTORY_BUILDER_3D = {
       num_threads = 1,
     },
   },
+
 
   motion_filter = {
     max_time_seconds = 0.5,
@@ -101,10 +105,13 @@ TRAJECTORY_BUILDER_3D = {
   -- CeresScanMatcher will CHECK-fail.
   use_intensities = false,
 }
+--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
+-- most of GLOBAL SLAM config
 POSE_GRAPH = {
-  optimize_every_n_nodes = 90,
+  optimize_every_n_nodes = 0, -- 90
   constraint_builder = {
     sampling_ratio = 0.3,
     max_constraint_distance = 15.,
@@ -188,16 +195,16 @@ POSE_GRAPH = {
 MAP_BUILDER = {
   use_trajectory_builder_2d = false,
   use_trajectory_builder_3d = false,
-  num_background_threads = 4,
+  num_background_threads = 6, -- 4
   pose_graph = POSE_GRAPH,
   collate_by_trajectory = false,
 }
 
-
+-- most of LOCAL SLAM config
 TRAJECTORY_BUILDER_2D = {
   use_imu_data = true,
-  min_range = 0,
-  max_range = 8.,
+  min_range = 0 , -- 0
+  max_range = 8., 
   min_z = -0.8,
   max_z = 2.,
   missing_data_ray_length = 5.,
@@ -225,9 +232,9 @@ TRAJECTORY_BUILDER_2D = {
   },
 
   ceres_scan_matcher = {
-    occupied_space_weight = 1.,
-    translation_weight = 10.,
-    rotation_weight = 40.,
+    occupied_space_weight = 1,
+    translation_weight = 2.5 , --10
+    rotation_weight = 20.,  --40
     ceres_solver_options = {
       use_nonmonotonic_steps = false,
       max_num_iterations = 20,
@@ -339,10 +346,16 @@ options = {
 }
 
 MAP_BUILDER.use_trajectory_builder_2d = true
-TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 10
+TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 15 -- 10
 
 -- TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 -- 많이 틀어졌을 때는 다시 원래대로 돌리는 힘은 약해지지만 새롭게 맵이 그려져서 왜곡되는 특성도 약해진다.
 
 
 return options
+
+
+------best ----------------------------------------
+-- translation_weight = 2.5 , --10
+-- rotation_weight = 20.,  --40
+-- TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 15 -- 10

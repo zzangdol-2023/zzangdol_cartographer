@@ -13,7 +13,7 @@
   <!-- most recent pbstream file as pbstream_file -->
 
   <node name="cartographer_node" pkg="cartographer_ros"
-      type="cartographer_node" args="
+      type="cartographer_node" args=" 
           -configuration_directory $(find zzangdol_cartographer)/configuration_files
           -configuration_basename zzangdol_localization.lua
           -load_state_filename $(find zzangdol_cartographer)/pbstream/$(arg load_state_filename).pbstream"
