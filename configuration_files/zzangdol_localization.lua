@@ -112,7 +112,7 @@ TRAJECTORY_BUILDER_3D = {
 POSE_GRAPH = {
   optimize_every_n_nodes = 5, -- 90
   constraint_builder = {
-    sampling_ratio = 0.3,
+    sampling_ratio = 0.1,
     max_constraint_distance = 15.,
     min_score = 0.55,
     global_localization_min_score = 0.6,
@@ -232,7 +232,7 @@ TRAJECTORY_BUILDER_2D = {
 
   ceres_scan_matcher = {
     occupied_space_weight = 1.,
-    translation_weight = 2 , --10
+    translation_weight = 3 , --10
     rotation_weight = 5.,  --40
     ceres_solver_options = {
       use_nonmonotonic_steps = false,
@@ -322,7 +322,7 @@ options = {
   published_frame = "base_footprint",
   odom_frame = "odom",
   provide_odom_frame = true,
-  publish_frame_projected_to_2d = true,
+  publish_frame_projected_to_2d = false,
   use_pose_extrapolator = true,
   use_odometry = false,
   use_nav_sat = false,
@@ -345,9 +345,9 @@ options = {
 }
 
 MAP_BUILDER.use_trajectory_builder_2d = true
-TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 40 -- 10
+TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 10
 
-TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true  -- 많이 틀어졌을 때는 다시 원래대로 돌리는 힘은 약해지지만 새롭게 맵이 그려져서 왜곡되는 특성도 약해진다.
+TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = false  -- 많이 틀어졌을 때는 다시 원래대로 돌리는 힘은 약해지지만 새롭게 맵이 그려져서 왜곡되는 특성도 약해진다.
 
 
 
@@ -384,7 +384,7 @@ TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true  -- 많이 틀
 TRAJECTORY_BUILDER.pure_localization_trimmer = {
   max_submaps_to_keep = 2,
 }
-POSE_GRAPH.optimize_every_n_nodes = 15 --90    : 1로 하니까 뭔가 이상한곳으로 매칭되는 현상이 잇다.
+POSE_GRAPH.optimize_every_n_nodes = 10 --90    : 1로 하니까 뭔가 이상한곳으로 매칭되는 현상이 잇다.
 
 
 -- TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 10
@@ -395,11 +395,11 @@ POSE_GRAPH.optimize_every_n_nodes = 15 --90    : 1로 하니까 뭔가 이상한
 -- TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 
 
--- -- output map to base_link for evaluation
+-- -- -- output map to base_link f=or evaluation
 -- options.provide_odom_frame = false
 -- POSE_GRAPH.optimization_problem.log_solver_summary = true
 
--- -- fast localization
+-- -- -- fast localization
 -- MAP_BUILDER.num_background_threads = 12
 -- POSE_GRAPH.constraint_builder.sampling_ratio = 0.5 * POSE_GRAPH.constraint_builder.sampling_ratio
 -- POSE_GRAPH.global_sampling_ratio = 0.1 * POSE_GRAPH.global_sampling_ratio
