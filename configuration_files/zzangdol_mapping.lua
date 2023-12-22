@@ -52,7 +52,6 @@ TRAJECTORY_BUILDER_3D = {
     },
   },
 
-
   motion_filter = {
     max_time_seconds = 0.5,
     max_distance_meters = 0.1,
@@ -111,7 +110,7 @@ TRAJECTORY_BUILDER_3D = {
 
 -- most of GLOBAL SLAM config
 POSE_GRAPH = {
-  optimize_every_n_nodes = 0, -- 90
+  optimize_every_n_nodes = 5, -- 90
   constraint_builder = {
     sampling_ratio = 0.3,
     max_constraint_distance = 15.,
@@ -182,7 +181,7 @@ POSE_GRAPH = {
     },
   },
   max_num_final_iterations = 200,
-  global_sampling_ratio = 0.001, -- 0.003
+  global_sampling_ratio = 0.003,
   log_residual_histograms = true,
   global_constraint_search_after_n_seconds = 10.,
   --  overlapping_submaps_trimmer_2d = {
@@ -224,7 +223,7 @@ TRAJECTORY_BUILDER_2D = {
   },
 
   use_online_correlative_scan_matching = false,
-  real_time_correlative_scan_matcher = {
+    real_time_correlative_scan_matcher = {
     linear_search_window = 0.1,
     angular_search_window = math.rad(20.),
     translation_delta_cost_weight = 1e-1,
@@ -232,9 +231,9 @@ TRAJECTORY_BUILDER_2D = {
   },
 
   ceres_scan_matcher = {
-    occupied_space_weight = 1,
-    translation_weight = 2.5 , --10
-    rotation_weight = 20.,  --40
+    occupied_space_weight = 1.,
+    translation_weight = 2 , --10
+    rotation_weight = 5.,  --40
     ceres_solver_options = {
       use_nonmonotonic_steps = false,
       max_num_iterations = 20,
@@ -346,16 +345,30 @@ options = {
 }
 
 MAP_BUILDER.use_trajectory_builder_2d = true
-TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 15 -- 10
+TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 40 -- 10
 
--- TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
--- 많이 틀어졌을 때는 다시 원래대로 돌리는 힘은 약해지지만 새롭게 맵이 그려져서 왜곡되는 특성도 약해진다.
-
+TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true  -- 많이 틀어졌을 때는 다시 원래대로 돌리는 힘은 약해지지만 새롭게 맵이 그려져서 왜곡되는 특성도 약해진다.
 
 return options
 
 
-------best ----------------------------------------
+------2F_11speed.bag best ----------------------------------------
 -- translation_weight = 2.5 , --10
 -- rotation_weight = 20.,  --40
 -- TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 15 -- 10
+
+
+------last.bag best ----------------------------------------
+
+
+-- num_background_threads = 6, -- 4
+-- min_range = 0 , -- 0
+-- max_range = 8., 
+-- max_range = 20.,
+
+-- optimize_every_n_nodes = 5, -- 90
+-- use_online_correlative_scan_matching = true,
+-- translation_weight = 2 , --10
+-- rotation_weight = 5.,  --40
+
+-- TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 40 

@@ -1,9 +1,13 @@
 -- backpack_2d.lua 개조 파일
 -- include를 풀어서 한 눈에 보기 쉽게 해놓았다.
 
+
 MAX_3D_RANGE = 60.
 INTENSITY_THRESHOLD = 40
 
+
+--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 TRAJECTORY_BUILDER_3D = {
   min_range = 1.,
   max_range = MAX_3D_RANGE,
@@ -100,7 +104,11 @@ TRAJECTORY_BUILDER_3D = {
   -- CeresScanMatcher will CHECK-fail.
   use_intensities = false,
 }
+--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
+
+-- most of GLOBAL SLAM config
 POSE_GRAPH = {
   optimize_every_n_nodes = 90,
   constraint_builder = {
@@ -191,7 +199,7 @@ MAP_BUILDER = {
   collate_by_trajectory = false,
 }
 
-
+-- most of LOCAL SLAM config
 TRAJECTORY_BUILDER_2D = {
   use_imu_data = true,
   min_range = 0.,
@@ -293,7 +301,6 @@ TRAJECTORY_BUILDER_2D = {
     },
   },
 }
-
 
 
 TRAJECTORY_BUILDER = {

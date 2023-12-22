@@ -19,8 +19,8 @@
   default="$(eval eval ('_' + '_import_' + '_(\'os\')').path.splitext(eval ('_' + '_import_' + '_(\'os\')').path.basename(max(eval ('_' + '_import_' + '_(\'glob\')').glob(find('zzangdol_cartographer')+'/pbstream/*'), key=eval ('_' + '_import_' + '_(\'os\')').path.getctime)))[0])"/>
   <!-- most recent pbstream file as pbstream_file -->
 
-  <node name="rviz" pkg="rviz" type="rviz" required="true"
-      args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
+  <!-- <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" /> -->
   <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find cartographer_ros)/configuration_files
