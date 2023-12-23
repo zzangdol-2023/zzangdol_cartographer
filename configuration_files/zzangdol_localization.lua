@@ -232,8 +232,8 @@ TRAJECTORY_BUILDER_2D = {
 
   ceres_scan_matcher = {
     occupied_space_weight = 1.,
-    translation_weight = 2 , --10
-    rotation_weight = 5.,  --40
+    translation_weight = 3 , --10
+    rotation_weight = 10.,  --40
     ceres_solver_options = {
       use_nonmonotonic_steps = false,
       max_num_iterations = 20,
@@ -345,7 +345,7 @@ options = {
 }
 
 MAP_BUILDER.use_trajectory_builder_2d = true
-TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 40 -- 10
+TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 10 -- 10
 
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true  -- 많이 틀어졌을 때는 다시 원래대로 돌리는 힘은 약해지지만 새롭게 맵이 그려져서 왜곡되는 특성도 약해진다.
 
