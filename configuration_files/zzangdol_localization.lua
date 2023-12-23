@@ -112,9 +112,9 @@ TRAJECTORY_BUILDER_3D = {
 POSE_GRAPH = {
   optimize_every_n_nodes = 5, -- 90
   constraint_builder = {
-    sampling_ratio = 0.1,
+    sampling_ratio = 0.2, -- 0.1->0.2아주 살짝 더 정확히 local slam 되는 느낌
     max_constraint_distance = 15.,
-    min_score = 0.55,
+    min_score = 0.65, -- 0.55->0.65 잘못된 warp 줄어듦
     global_localization_min_score = 0.6,
     loop_closure_translation_weight = 1.1e4,
     loop_closure_rotation_weight = 1e5,
@@ -208,11 +208,11 @@ TRAJECTORY_BUILDER_2D = {
   max_z = 2.,
   missing_data_ray_length = 5.,
   num_accumulated_range_data = 1,
-  voxel_filter_size = 0.025,
+  voxel_filter_size = 0.025, -- 바꾸면 조짐
 
   adaptive_voxel_filter = {
     max_length = 0.5,
-    min_num_points = 200,
+    min_num_points = 100,
     max_range = 20.,
   },
 
@@ -222,7 +222,7 @@ TRAJECTORY_BUILDER_2D = {
     max_range = 50.,
   },
 
-  use_online_correlative_scan_matching = false,
+  use_online_correlative_scan_matching = true,
     real_time_correlative_scan_matcher = {
     linear_search_window = 0.1,
     angular_search_window = math.rad(20.),
@@ -242,8 +242,8 @@ TRAJECTORY_BUILDER_2D = {
   },
 
   motion_filter = {
-    max_time_seconds = 5.,
-    max_distance_meters = 0.2,
+    max_time_seconds = 3.,
+    max_distance_meters = 0.1,
     max_angle_radians = math.rad(1.),
   },
 
